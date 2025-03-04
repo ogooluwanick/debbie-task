@@ -8,6 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        "fg-base": "#292929",
+        "fg-supporting": "#737373",
+        "fg-mild": "#A3A3A3",
+        "fg-subtle": "#525252",
+        "off-black": "#1e1e1e",
+        "brand-subtle": "#7839EE",
+      },
+      backgroundColor:{
+        "subtle": "#F7F7F7",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -17,4 +28,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;
