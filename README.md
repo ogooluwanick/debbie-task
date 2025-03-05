@@ -18,6 +18,6 @@ Check out the [live demo](https://debbie-task.vercel.app/) to see the widget in 
 Clone the repository and install the dependencies:
 
 ```bash
-git clone https://github.com/yourusername/calendar-widget.git
-cd calendar-widget
+git clone https://github.com/ogooluwanick/debbie-task.git
+cd debbie-task
 npm install
