@@ -11,7 +11,7 @@ This is an interactive calendar widget built with **React**, styled with **Tailw
 
 ## Demo
 
-Check out the [live demo](debbie-task.vercel.app) to see the widget in action!
+Check out the [live demo]([debbie-task.vercel.app](https://debbie-task.vercel.app/)) to see the widget in action!
 
 ## Installation
 
