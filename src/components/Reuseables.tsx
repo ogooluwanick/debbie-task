@@ -128,8 +128,8 @@ interface CopyButtonProps {
 const CopyButton: React.FC<CopyButtonProps> = ({ textToCopy }) => {
         const handleCopyClick = () => {
                 navigator.clipboard.writeText(textToCopy)
-                        .then(() => toast.success("Link copied!", { position: "bottom-right" }))
-                        .catch(error => toast.error("Copy failed"));
+                        .then(() => toast.success("Link to secret key copied!", { position: "bottom-right" }))
+                        .catch(error => toast.error("Copy failed", { position: "bottom-right" }));
         };
 
         return (
