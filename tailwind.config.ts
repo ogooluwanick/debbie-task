@@ -16,12 +16,14 @@ const config: Config = {
                                 "off-black": "#1e1e1e",
                                 "brand-subtle": "#7839EE",
                                 "base-alt": "#424242",
+
                         },
                         backgroundColor: {
                                 "subtle": "#F7F7F7",
                                 "strong": "#E5E5E5",
                                 "disabled": "#F5F5F5",
                                 "mild": "#FCFCFC",
+                                "interactive": "#875BF7",
                         },
                         backgroundImage: {
                                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
