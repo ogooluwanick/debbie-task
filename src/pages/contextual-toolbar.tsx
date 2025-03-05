@@ -29,7 +29,7 @@ const CalenderWidget = () => {
                         if (button) {
                                 const { left, width } = button.getBoundingClientRect();
                                 const containerLeft = container.getBoundingClientRect().left;
-                                const scrollLeft = container.scrollLeft; // Get current scroll position
+                                const scrollLeft = container.scrollLeft; 
 
                                 setSliderStyle({ left: left - containerLeft + scrollLeft, width });
                         }
@@ -38,22 +38,17 @@ const CalenderWidget = () => {
 
         const handleCopyClick = (textToCopy: string) => {
 
-                // Create a textarea element to hold the text temporarily
                 const textArea = document.createElement("textarea");
                 textArea.value = textToCopy;
                 document.body.appendChild(textArea);
 
-                // Select the text within the textarea
                 textArea.select();
-                textArea.setSelectionRange(0, 99999); // For mobile devices
+                textArea.setSelectionRange(0, 99999); 
 
-                // Copy the selected text to the clipboard
                 document.execCommand("copy");
 
-                // Remove the textarea from the DOM
                 document.body.removeChild(textArea);
 
-                // Optionally, you can show a message or perform any other action upon successful copying
                 toast.success("Link to secret key copied!", { position: "bottom-right" });
         };
 
@@ -91,10 +86,10 @@ const CalenderWidget = () => {
                                                                 <motion.div
                                                                         className={`p-4 rounded-[18px] w-full h-full cursor-pointer overflow-hidden max-w-[482px]`}
                                                                         style={{ transformOrigin: 'top', boxShadow: "0px 8px 16px 0px #0000000A, 0px 4px 8px 0px #0000000A, 0px 0px 0px 1px #09090B0D" }}
-                                                                        key={selectedButton} // Use key to trigger re-mounting and animation
-                                                                        initial={{ opacity: 0, height: 0 }}  // Start with opacity 0 and height 0
-                                                                        animate={{ opacity: 1, height: 'auto' }}   // Animate to opacity 1 and height auto
-                                                                        exit={{ opacity: 0, height: 0 }}      // Fade out and collapse height to 0
+                                                                        key={selectedButton} 
+                                                                        initial={{ opacity: 0, height: 0 }}  
+                                                                        animate={{ opacity: 1, height: 'auto' }}  
+                                                                        exit={{ opacity: 0, height: 0 }}     
                                                                         transition={{ duration: 0.5, ease: 'easeInOut', scaleY: { type: 'spring', stiffness: 300, damping: 25 } }}
                                                                 >
                                                                         {
