@@ -1,21 +1,18 @@
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import useOnclickOutside from 'react-cool-onclickoutside';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from "next/link";
 import { LuMenu } from "react-icons/lu";
 import { APIKeySection, MotionWrap, RepositorySection, ShareWorkspaceSection, WebhookSection } from "@/components";
-import { FaCheck } from "react-icons/fa";
-import { IoCopyOutline } from "react-icons/io5";
-import toast from "react-hot-toast";
+import { useMeasure } from 'react-use'
 
 
 const CalenderWidget = () => {
         const [selectedButton, setSelectedButton] = useState<number | null>(0);
         const [sliderStyle, setSliderStyle] = useState({ left: 0, width: 0 });
-
+        
         const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
         const containerRef = useRef<HTMLDivElement | null>(null);
+        const [ref, { width }] = useMeasure<HTMLDivElement>();
 
         const buttons = ["Create webhook", "Connect repositories", "Create API key", "Share Workspace"];
 
@@ -42,7 +39,7 @@ const CalenderWidget = () => {
                 <MotionWrap>
                         <main className={`min-h-screen p-4 sm:p-[46px]  w-full flex   items-stretch`} aria-label="Contextual Toolbar"
                         >
-                                <section className="relative flex  justify-center flex-col rounded-[32px] pb-20 px-4 sm:px-[113px]  py-4 sm:pb-[94px] sm:py-[94px] w-full" style={{ boxShadow: "0px 1px 2px 0px #09090B0D ,0px 0px 0px 1px #09090B0D" }}>
+                                <section className="relative flex  justify-center flex-col rounded-[32px] pb-20 px-4 lg:px-[113px]  py-4 lg:pb-[94px] lg:py-[94px] w-full" style={{ boxShadow: "0px 1px 2px 0px #09090B0D ,0px 0px 0px 1px #09090B0D" }}>
 
                                         <div className="app__flex flex-wrap !items-start sm:!items-center flex-col sm:flex-row gap-8 w-full">
                                                 <div className="flex-1">
@@ -62,14 +59,14 @@ const CalenderWidget = () => {
                                                                 </div>
                                                         </div>
                                                 </div>
-                                                <div className="flex-1 w-full">
+                                                <div className="flex-1 w-full" ref={ref}>
                                                         <AnimatePresence>
                                                                 <motion.div
                                                                         layout
-                                                                        className="md:absolute md:bottom-[calc(50%-245px)]  p-4 rounded-[18px] w-full cursor-pointer overflow-hidden max-w-[482px]"
+                                                                        className={`md:absolute md:bottom-[calc(50%-245px)]  p-4 rounded-[18px] w-full cursor-pointer overflow-hidden `}
                                                                         style={{
-                                                                                boxShadow:
-                                                                                        "0px 8px 16px 0px #0000000A, 0px 4px 8px 0px #0000000A, 0px 0px 0px 1px #09090B0D",
+                                                                                boxShadow: "0px 8px 16px 0px #0000000A, 0px 4px 8px 0px #0000000A, 0px 0px 0px 1px #09090B0D",
+                                                                                maxWidth: `min(482px,${width}px)`,
                                                                         }}
                                                                         initial={{ opacity: 0 }}
                                                                         animate={{ opacity: 1 }}
@@ -149,7 +146,7 @@ const CalenderWidget = () => {
                                                 </div>
                                         </div>
 
-                                        <Link href={`/`} className="absolute left-6 bottom-6 md:left-[113px] md:bottom-[94px] py-1.5 px-2.5 text-fg-base rounded-lg text-sm font-medium w-fit transition  hover:bg-off-black hover:text-white shadow-[0px_0px_0px_1px_#00000014,0px_1px_2px_0px_#0000001F]" >Previous task</Link>
+                                        <Link href={`/`} className="absolute left-6 bottom-6 lg:left-[113px] lg:bottom-[94px] py-1.5 px-2.5 text-fg-base rounded-lg text-sm font-medium w-fit transition  hover:bg-off-black hover:text-white shadow-[0px_0px_0px_1px_#00000014,0px_1px_2px_0px_#0000001F]" >Previous task</Link>
 
                                 </section>
                         </main>
