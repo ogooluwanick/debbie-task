@@ -93,8 +93,8 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
         onChange,
         label
 }) => {
-        return (
-                <div className="flex items-center justify-between gap-2">
+        return ( 
+                <div className={`flex items-center justify-between gap-2  ${checked?"mb-2":"mb-3"}`}>
                         {label && (
                                 <div>
                                         <h6 className="font-medium text-sm flex items-center gap-1">
