@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
                         description: "Debbie's task",
                         images: [
                                 {
-                                        url: '', // Default image URL
+                                        url: 'https://i.pinimg.com/474x/61/f7/5e/61f75ea9a680def2ed1c6929fe75aeee.jpg', // Default image URL
                                         width: 1280,
                                         height: 640,
                                         alt: "Debbie's task",
@@ -42,7 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 additionalLinkTags: [
                         {
                                 rel: 'icon',
-                                href: '',
+                                href: 'https://i.pinimg.com/474x/61/f7/5e/61f75ea9a680def2ed1c6929fe75aeee.jpg',
                         },
                         {
                                 rel: 'manifest',

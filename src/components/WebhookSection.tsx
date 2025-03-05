@@ -29,6 +29,9 @@ export const WebhookSection: React.FC = () => {
                                         <div className="w-full mb-[20px]">
                                                 <label className="font-medium text-sm block mb-2">Endpoint</label>
                                                 <Input
+                                                        type="text"
+                                                        aria-required="true"
+                                                        aria-describedby="endpoint-hint"
                                                         placeholder="https://myapp.com/webhooks"
                                                         value={endpoint}
                                                         onChange={setEndpoint}

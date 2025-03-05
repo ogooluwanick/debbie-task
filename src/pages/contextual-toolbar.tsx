@@ -12,10 +12,7 @@ import toast from "react-hot-toast";
 
 const CalenderWidget = () => {
         const [selectedButton, setSelectedButton] = useState<number | null>(0);
-        const [isSharing, setIsSharing] = useState<boolean | null>(false);
-        const [copyLink, setCopyLink] = useState<string | null>("/mylink.com");
         const [sliderStyle, setSliderStyle] = useState({ left: 0, width: 0 });
-
 
         const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
         const containerRef = useRef<HTMLDivElement | null>(null);
@@ -36,22 +33,6 @@ const CalenderWidget = () => {
                 }
         };
 
-        const handleCopyClick = (textToCopy: string) => {
-
-                const textArea = document.createElement("textarea");
-                textArea.value = textToCopy;
-                document.body.appendChild(textArea);
-
-                textArea.select();
-                textArea.setSelectionRange(0, 99999);
-
-                document.execCommand("copy");
-
-                document.body.removeChild(textArea);
-
-                toast.success("Link to secret key copied!", { position: "bottom-right" });
-        };
-
         useEffect(() => {
                 updateSliderPosition();
                 // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -59,8 +40,8 @@ const CalenderWidget = () => {
 
         return (
                 <MotionWrap>
-
-                        <main className={`min-h-screen p-4 sm:p-[46px]  w-full flex   items-stretch`} >
+                        <main className={`min-h-screen p-4 sm:p-[46px]  w-full flex   items-stretch`} aria-label="Contextual Toolbar"
+                        >
                                 <section className="relative flex  justify-center flex-col rounded-[32px] pb-20 px-4 sm:px-[113px]  py-4 sm:pb-[94px] sm:py-[94px] w-full" style={{ boxShadow: "0px 1px 2px 0px #09090B0D ,0px 0px 0px 1px #09090B0D" }}>
 
                                         <div className="app__flex flex-wrap !items-start sm:!items-center flex-col sm:flex-row gap-8 w-full">
@@ -109,7 +90,7 @@ const CalenderWidget = () => {
                                                                                                 : selectedButton == 2 ?
                                                                                                         <APIKeySection />
                                                                                                         : selectedButton == 3 ?
-                                                                                                                <ShareWorkspaceSection/>
+                                                                                                                <ShareWorkspaceSection />
                                                                                                                 : ""
                                                                         }
 
@@ -131,13 +112,22 @@ const CalenderWidget = () => {
                                                                                 <div className="no-scrollbar flex gap-2 overflow-scroll flex-1 relative" ref={containerRef}>
                                                                                         {buttons.map((label, i) => (
                                                                                                 <button
-                                                                                                        className={` z-[2] px-3 py-2 rounded-[10px]  bg-transparent block  font-medium text-sm  border border-solid border-transparent whitespace-nowrap transition hover:text-base-alt ${i == selectedButton ? "text-base-alt" : "text-fg-supporting"}`}
+                                                                                                        aria-label={`Switch to ${label} section`}
+                                                                                                        aria-selected={i === selectedButton}
+                                                                                                        role="tab"
+                                                                                                        tabIndex={0}
+                                                                                                        className={` z-[2] px-3 py-2 rounded-[10px]  bg-transparent block  font-medium text-sm  border border-solid border-transparent whitespace-nowrap transition hover:text-base-alt focus-visible:opacity-50 ${i == selectedButton ? "text-base-alt" : "text-fg-supporting"}`}
                                                                                                         ref={(el) => {
                                                                                                                 btnRefs.current[i] = el;
                                                                                                         }}
-
                                                                                                         key={i}
                                                                                                         onClick={() => { setSelectedButton(i); }}
+                                                                                                        onKeyDown={(e) => {
+                                                                                                                if (e.key === 'Enter' || e.key === ' ') {
+                                                                                                                        setSelectedButton(i);
+                                                                                                                }
+                                                                                                        }}
+
                                                                                                 >
                                                                                                         {label}
                                                                                                 </button>

@@ -16,6 +16,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ id, label, checked = false, onChang
                 <div className="flex items-center cursor-pointer">
                         <input
                                 id={id}
+                                aria-label={id}
                                 type="checkbox"
                                 checked={checked}
                                 onChange={(e) => onChange?.(e.target.checked)}
@@ -44,12 +45,13 @@ const RadioButton: React.FC<RadioButtonProps> = ({ id, label, checked = false, o
                         <input
                                 id={id}
                                 type="radio"
+                                aria-label={id}
                                 checked={checked}
                                 onChange={(e) => onChange?.(e.target.checked)}
                                 className="peer hidden"
                                 name="radio-group"
                         />
-                        <span className={`w-3.5 h-3.5 shadow-[0px_0px_0px_1px_#00000014,0px_1px_2px_0px_#0000001F] rounded-full app__flex peer-checked:bg-brand-subtle peer-checked:shadow-[0px_0px_0px_1px_#7839EE,0px_1px_2px_0px_#491C9680]  peer-hover:rounded-[4px] peer-hover:bg-disabled peer-checked:!bg-[#7839EE]  peer-checked:!rounded-full `} />
+                        <span className={`w-3.5 h-3.5 shadow-[0px_0px_0px_1px_#00000014,0px_1px_2px_0px_#0000001F] rounded-full app__flex peer-checked:bg-brand-subtle peer-checked:shadow-[0px_0px_0px_1px_#7839EE,0px_1px_2px_0px_#491C9680]  peer-hover:rounded-[4px] peer-hover:bg-disabled  peer-checked:!rounded-full `} />
                         <span className="-ml-2.5 w-1.5 h-1.5 transition-all rounded-full peer-checked:bg-white bg-transparent peer-checked:shadow-[0px_1px_2px_0px_#491C9699]" />
                         <label htmlFor={id} className="ml-3 text-[13px] leading-[19.5px] text-fg-supporting">{label}</label>
                 </div>
@@ -107,6 +109,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
                         )}
                         <label className="inline-flex items-center cursor-pointer">
                                 <input
+                                        aria-label={label}
                                         type="checkbox"
                                         checked={checked}
                                         onChange={(e) => onChange(e.target.checked)}

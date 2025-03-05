@@ -29,14 +29,14 @@ export default function Home() {
         const cardRef = useOnclickOutside(() => setToggleCard(false));
         const [toggleCard, setToggleCard] = useState(false);
         const [hoverCard, setHoverCard] = useState<User | undefined>(undefined);
-        const [windowWidth, setWindowWidth] = useState(1024);
+        const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
 
+
+        const handleResize = () => {
+                setWindowWidth(window.innerWidth);
+        };
 
         useEffect(() => {
-                const handleResize = () => {
-                        setWindowWidth(window.innerWidth);
-                };
-
                 window.addEventListener("resize", handleResize);
                 return () => window.removeEventListener("resize", handleResize);
         }, []);
@@ -45,7 +45,7 @@ export default function Home() {
                 <MotionWrap>
 
 
-                        <main className={`min-h-screen p-4 sm:p-[46px]  w-full flex   items-stretch`} >
+                        <main className={`min-h-screen p-4 sm:p-[46px]  w-full flex   items-stretch`} aria-label="Calendar Widget Page">
                                 <section className="relative flex  justify-center flex-col rounded-[32px] px-4 sm:px-[113px]  py-4 sm:py-[94px] w-full" style={{ boxShadow: "0px 1px 2px 0px #09090B0D ,0px 0px 0px 1px #09090B0D" }}>
 
                                         <div className="app__flex flex-wrap !items-start sm:!items-center flex-col sm:flex-row gap-8 w-full">
